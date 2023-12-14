@@ -2,112 +2,111 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>无缝轮播图</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swiper</title>
   <style>
-    .carousel-container {
-      width: 500px;
-      height: 300px;
-      overflow: hidden;
-      /* outline: 2px solid lightblue; */
-      margin: 0 auto;
+    :root {
+      --swiper-width: 766px;
+      --swiper-height: 260px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    .swiper {
       position: relative;
+      width: var(--swiper-width);
+      height: var(--swiper-height);
+      margin: 0 auto;
+      overflow: hidden;
     }
 
-    .carousel-list {
-      width: 500%;
-      height: 100%;
+    .img-container {
+      display: flex;
     }
 
-    .carousel-item {
-      width: 500px;
-      height: 100%;
-      object-fit: cover;
-      float: left;
+    img {
+      display: block;
+      width: var(--swiper-width);
+      height: var(--swiper-height);
     }
 
-    .indicator {
+    .arrow {
       position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
       width: 100%;
-      left: 0;
-      bottom: 0;
-      height: 30px;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 8px;
     }
 
-    .indicator-item {
-      display: inline-block;
-      width: 20px;
-      height: 2px;
-      background: #fff;
-      cursor: pointer;
-      margin: 0 5px;
-    }
-
-    .indicator-item.active {
-      background: #ffa44f;
-    }
-
-    .arrow-left,
-    .arrow-right {
-      position: absolute;
-      width: 50px;
-      height: 100%;
-      top: 0;
-      background: rgba(0, 0, 0, 0.5);
-      cursor: pointer;
+    .left,
+    .right {
+      font-size: 24px;
+      font-weight: bolder;
+      transition: 0.3s;
       opacity: 0;
-      color: #fff;
+      cursor: pointer;
     }
 
-    .arrow-left:hover,
-    .arrow-right:hover {
+    .swiper:hover .left,
+    .swiper:hover .right {
       opacity: 1;
     }
 
-    .arrow-left {
-      left: 0;
-    }
-
-    .arrow-left::before {
-      content: '<';
-    }
-
-    .arrow-right {
-      right: 0;
-    }
-
-    .arrow-right::before {
-      content: '>';
-    }
-
-    .arrow-left::before,
-    .arrow-right::before {
+    .indictor-container {
       position: absolute;
       left: 0;
-      width: 100%;
-      text-align: center;
-      top: 50%;
-      height: 30px;
-      line-height: 30px;
-      margin-top: -15px;
+      right: 0;
+      bottom: 0;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .indictor-container span {
+      width: 24px;
+      height: 3px;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .indictor-container span.active {
+      background-color: orange;
     }
   </style>
 </head>
 
 <body>
-  <div class="carousel-container">
-    <div class="carousel-list"></div>
-    <div class="indicator"></div>
-    <div class="arrow">
-      <div class="arrow-left"></div>
-      <div class="arrow-right"></div>
+  <div class="swiper">
+    <div class="img-container">
+      <img src="./img/bg-1.png" alt="">
+      <img src="./img/bg-2.png" alt="">
+      <img src="./img/bg-3.png" alt="">
     </div>
+
+    <div class="arrow">
+      <span class="left">&lt;</span>
+      <span class="right">&gt;</span>
+    </div>
+
+    <div class="indictor-container"></div>
   </div>
-  <script src="./js/animate.js"></script>
-  <script src="./js/index.js"></script>
+
+  <script src="./animate.js"></script>
+  <script src="./index.js"></script>
 </body>
 
 </html>
